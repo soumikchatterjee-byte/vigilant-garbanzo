@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMCL Risk Pulse - Weekly Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 40vh;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-box {
+            background-color: #FFFFFF;
+            border-left: 5px solid #FF6B6B; 
+        }
+        .kpi-number {
+            font-weight: 900;
+            color: #495057;
+        }
+        .section-title {
+            color: #1A202C;
+            border-bottom: 3px solid #FF6B6B;
+        }
+        .card {
+             background-color: white;
+             border-radius: 0.75rem;
+             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+             padding: 1.5rem;
+             margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-gray-700">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">HMCL Risk Pulse</h1>
+            <div class="flex items-center space-x-4">
+                <div class="flex flex-col items-end text-right">
+                    <p class="text-sm font-semibold text-gray-700">Risk Pulse No. 1</p>
+                    <p class="text-sm font-normal text-gray-500">Week ending August 22, 2025</p>
+                </div>
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fa/Hero_MotoCorp_Logo.svg/200px-Hero_MotoCorp_Logo.svg.png" alt="Hero MotoCorp Logo" class="h-10" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-2">Navigating a Dynamic Market</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">A visual summary of the key strategic risks and market forces impacting Hero MotoCorp, from economic shifts to the rise of electric mobility.</p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <div class="card lg:col-span-3">
+                <h3 class="text-2xl font-bold mb-4 section-title pb-2">Economic & Market Outlook</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                    <div class="kpi-box p-6 rounded-lg shadow-sm text-center">
+                        <p class="text-lg font-semibold text-gray-600 mb-2">Projected Market Growth</p>
+                        <p class="text-6xl kpi-number">3.5%</p>
+                        <p class="text-md text-gray-500">CAGR (2025-2034)</p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <p class="mb-4 text-gray-600">The Indian two-wheeler market shows steady growth, driven by urbanization and rising incomes. However, risks from global trade tariffs and domestic inflation could impact consumer affordability and supply chain costs, requiring careful strategic navigation.</p>
+                        <div class="chart-container">
+                            <canvas id="marketGrowthChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card md:col-span-2 lg:col-span-1">
+                <h3 class="text-2xl font-bold mb-4 section-title pb-2">Competitive Landscape</h3>
+                <p class="mb-4 text-gray-600">Hero MotoCorp faces intensifying competition. While holding a leading position, rivals are gaining ground in both traditional and electric segments, making market share retention a key challenge.</p>
+                <div class="chart-container h-64 max-h-[35vh]">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card md:col-span-2">
+                 <h3 class="text-2xl font-bold mb-4 section-title pb-2">The Electric Vehicle Arena (July 2025)</h3>
+                 <p class="mb-4 text-gray-600">The EV market is a critical battleground. While Hero is making inroads, competitors like TVS and Bajaj have established a strong early presence. Capturing a significant share in this rapidly growing segment is vital for future relevance and growth.</p>
+                <div class="chart-container">
+                    <canvas id="evMarketShareChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card lg:col-span-3">
+                <h3 class="text-2xl font-bold mb-4 section-title pb-2">Regulatory & Cyber Threats</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="kpi-box p-6 rounded-lg shadow-sm">
+                        <p class="text-lg font-semibold text-gray-600 mb-2">ABS Mandate Impact</p>
+                        <p class="text-6xl kpi-number">3-5%</p>
+                        <p class="text-md text-gray-500">Price hike on sub-125cc models</p>
+                    </div>
+                    <div class="kpi-box p-6 rounded-lg shadow-sm">
+                        <p class="text-lg font-semibold text-gray-600 mb-2">Affected Segment</p>
+                        <p class="text-6xl kpi-number">78%</p>
+                        <p class="text-md text-gray-500">Of sales are sub-125cc (FY25)</p>
+                    </div>
+                     <div class="kpi-box p-6 rounded-lg shadow-sm">
+                        <p class="text-lg font-semibold text-gray-600 mb-2">Manufacturing Cyber Risk</p>
+                        <p class="text-6xl kpi-number">15%</p>
+                        <p class="text-md text-gray-500">Of ransomware attacks target manufacturing</p>
+                    </div>
+                </div>
+                 <p class="mt-6 text-gray-600">Upcoming regulations, like the mandatory ABS rule, will directly impact costs in Hero's core market segment. Simultaneously, the manufacturing sector is a prime target for cyberattacks, posing significant operational and financial risks that demand robust security measures.</p>
+            </div>
+            
+            <div class="card md:col-span-2">
+                <h3 class="text-2xl font-bold mb-4 section-title pb-2">EV Market Growth Projection</h3>
+                 <p class="mb-4 text-gray-600">The electric two-wheeler market is set for exponential growth, transitioning from a niche to a mainstream segment. This rapid expansion represents both a massive opportunity and a significant disruption risk for established players focused on traditional engines.</p>
+                <div class="chart-container">
+                    <canvas id="evAdoptionChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="text-2xl font-bold mb-4 section-title pb-2">EV Adoption Hurdles</h3>
+                <p class="mb-6 text-gray-600">Successfully navigating the EV transition requires overcoming several key obstacles that impact widespread consumer adoption.</p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-lg">1</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Charging Infrastructure</h4>
+                            <p class="text-gray-600">A significant lack of charging stations, especially in rural and semi-urban areas, creates range anxiety for potential buyers.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 h-8 w-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center font-bold text-lg">2</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">High Upfront Cost</h4>
+                            <p class="text-gray-600">Despite subsidies, the initial purchase price of EVs remains higher than their ICE counterparts, a major barrier in a price-sensitive market.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                         <div class="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg">3</div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">Supply Chain Reliance</h4>
+                            <p class="text-gray-600">Dependence on imported components like batteries and semiconductors creates vulnerability to geopolitical tensions and price volatility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-12">
+        <div class="container mx-auto p-6 text-center">
+            <p>&copy; 2025 HMCL Risk Pulse. Data synthesized for strategic analysis.</p>
+        </div>
+    </footer>
+
+    <script>
+        const energeticPlayfulPalette = {
+            primary: '#FF6B6B',
+            secondary: '#FFD166',
+            accent: '#06D6A0',
+            neutral: '#118AB2',
+            dark: '#073B4C',
+            light: '#F0F4F8'
+        };
+
+        function wrapLabels(label, maxLength) {
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxLength) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+        
+        const tooltipTitleCallback = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        const marketGrowthCtx = document.getElementById('marketGrowthChart').getContext('2d');
+        new Chart(marketGrowthCtx, {
+            type: 'line',
+            data: {
+                labels: ['2024', '2025', '2028', '2031', '2034'],
+                datasets: [{
+                    label: 'Market Size (USD Billion)',
+                    data: [335.07, 346.81, 385.5, 428.9, 472.75],
+                    backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                    borderColor: energeticPlayfulPalette.primary,
+                    tension: 0.4,
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value + 'B';
+                            }
+                        }
+                    }
+                },
+                ...tooltipTitleCallback
+            }
+        });
+
+        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+        new Chart(marketShareCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Hero MotoCorp', 'Honda', 'TVS Motor', 'Bajaj Auto', 'Others'],
+                datasets: [{
+                    label: 'FY25 Market Share',
+                    data: [28, 27, 18, 12, 15],
+                    backgroundColor: [
+                        energeticPlayfulPalette.primary,
+                        energeticPlayfulPalette.secondary,
+                        energeticPlayfulPalette.accent,
+                        energeticPlayfulPalette.neutral,
+                        '#CED4DA'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Two-Wheeler Market Share (FY25)'
+                    }
+                }
+            }
+        });
+
+        const evMarketShareCtx = document.getElementById('evMarketShareChart').getContext('2d');
+        new Chart(evMarketShareCtx, {
+            type: 'bar',
+            data: {
+                labels: ['TVS Motor', 'Bajaj Auto', 'Ola Electric', 'Ather Energy', 'Hero MotoCorp'],
+                datasets: [{
+                    label: 'Market Share (%)',
+                    data: [21.60, 19.10, 17.40, 15.77, 10.19],
+                    backgroundColor: [
+                        energeticPlayfulPalette.accent,
+                        energeticPlayfulPalette.neutral,
+                        energeticPlayfulPalette.secondary,
+                        energeticPlayfulPalette.dark,
+                        energeticPlayfulPalette.primary
+                    ],
+                    borderRadius: 4,
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                     ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'EV Two-Wheeler Market Share (July 2025)'
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        const evAdoptionCtx = document.getElementById('evAdoptionChart').getContext('2d');
+        new Chart(evAdoptionCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2024', '2034 (Projected)'],
+                datasets: [{
+                    label: 'Annual Sales (Million Units)',
+                    data: [1.14, 11.59],
+                    backgroundColor: [energeticPlayfulPalette.secondary, energeticPlayfulPalette.accent],
+                    barPercentage: 0.5,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...tooltipTitleCallback.plugins,
+                    legend: {
+                        display: false,
+                    },
+                    title: {
+                        display: true,
+                        text: 'Growth in EV Two-Wheeler Sales'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Units (Millions)'
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
